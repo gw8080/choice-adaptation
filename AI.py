@@ -27,12 +27,15 @@ if user_inputB == "exec":
 _input = input("USER:")
 textA = proc(_input)
 textB = proc(_input)
+f = open("output.txt","a")
 while(True):
     print("AI:" + textA[0:textA.find(".")+1].replace(_input,""))
     print("AI:" + textB[0:textB.find(".")+1].replace(_input,""))
-    user_choice = input("Validate[y/n]:")
+    user_choice = input("Validate[y/n]:")#check theme for validation
     if user_choice == "n" or user_choice == "N":
         textB = proc(_input)
     if user_choice == "y" or user_choice == "Y":
+        f.write(textA[0:textA.find(".")+1].replace(_input,""))
+        f.flush()
         textA = textB.replace(_input,"")
         textB = proc(_input)
